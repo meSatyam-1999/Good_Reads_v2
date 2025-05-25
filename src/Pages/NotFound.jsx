@@ -1,7 +1,10 @@
+import Notfound from "../Assets/Images/notfound404.svg"
+
+
 const NotFound = () => {
     return(
-        <div>
-            <h1>OOPS!!!......This page is not found.</h1>
+        <div className="flex justify-center items-center">
+            <img className="w-[45%]" src={Notfound} alt="Not-found-image" />
         </div>
     )
 }

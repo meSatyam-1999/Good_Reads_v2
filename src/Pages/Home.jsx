@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../Assets/Images/book.png"
 
 const Home = () => {
@@ -9,8 +10,8 @@ const Home = () => {
             <h1 className="text-8xl font-bold font-serif mt-4 text-amber-400">Bookio.in</h1>
             <span className="text-2xl mt-2">#Just one more chapter.</span>
             <div className="mt-10">
-                <button className="btn btn-active btn-primary w-40 m-5">Login</button>
-                <button className="btn btn-active btn-warning w-40 text-black font-semibold">Register</button>
+               <Link to="/login"><button className="btn btn-active btn-primary w-40 m-5">Login</button></Link> 
+                <Link to="/signup"><button className="btn btn-active btn-warning w-40 text-black font-semibold">Register</button></Link>
             </div>
         </div>
     )
