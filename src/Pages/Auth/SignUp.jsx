@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+
+ const [signUpDetails,setSignUpDetails]=useState({
+        username: '',
+        email: '',
+        password: '',
+    })
+
+    function handleFormChange(e) {
+        const {name, value} = e.target;
+        setSignUpDetails({
+            ...signUpDetails,
+            [name]: value
+        });
+    }
+
+    function onFormSubmit(e) {
+        e.preventDefault();
+        console.log(signUpDetails);
+    }
+
+
     return (
         <div className="main-container w-full flex flex-col items-center justify-center">
             <div className="mt-15">
@@ -12,25 +34,25 @@ const SignUp = () => {
             
 
             <div className="mt-15 border-2 p-8 rounded-lg">
-                <form className="flex flex-col justify-center items-center">
+                <form onSubmit={onFormSubmit} className="flex flex-col justify-center items-center">
                     {/* register form input box  */}
                    
                    {/* username input field */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend text-lg">Name</legend>
-                        <input type="text" className="input bg-white text-black w-80" placeholder="*Username" />
+                        <input name="username" onChange={handleFormChange} value={signUpDetails.username} type="text" className="input bg-white text-black w-80" placeholder="*Username" />
                     </fieldset>
 
                     {/* email input field */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend text-lg">Email</legend>
-                        <input type="text" className="input bg-white text-black w-80" placeholder="*E-mail" />
+                        <input name="email" onChange={handleFormChange} value={signUpDetails.email} type="text" className="input bg-white text-black w-80" placeholder="*E-mail" />
                     </fieldset>
 
                     {/* password input field */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend text-lg">Password</legend>
-                        <input type="text" className="input bg-white text-black w-80" placeholder="*Password" />
+                        <input name="password" onChange={handleFormChange} value={signUpDetails.password} type="password" className="input bg-white text-black w-80" placeholder="*Password" />
                     </fieldset>
 
                     {/* Already have an account field */}

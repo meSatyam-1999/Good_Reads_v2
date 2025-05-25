@@ -1,6 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+
+
+    const [signInDetails,setSignInDetails]=useState({
+        email: '',
+        password: '',
+    })
+
+    function handleFormChange(e) {
+        const {name, value} = e.target;
+        setSignInDetails({
+            ...signInDetails,
+            [name]: value
+        });
+    }
+
+    function onFormSubmit(e) {
+        e.preventDefault();
+        console.log(signInDetails);
+    }
+
     return(
         <div className="main-container w-full flex flex-col items-center justify-center">
             <div className="mt-15">
@@ -12,20 +33,20 @@ const Login = () => {
             
 
             <div className="mt-15 border-2 p-8 rounded-lg">
-                <form className="flex flex-col justify-center items-center">
+                <form onSubmit={onFormSubmit} className="flex flex-col justify-center items-center">
                     {/* register form input box  */}
     
 
                     {/* email input field */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend text-lg">Email</legend>
-                        <input type="text" className="input bg-white text-black w-80" placeholder="*E-mail" />
+                        <input name="email" onChange={handleFormChange} value={signInDetails.email} type="text" className="input bg-white text-black w-80" placeholder="*E-mail" />
                     </fieldset>
 
                     {/* password input field */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend text-lg">Password</legend>
-                        <input type="text" className="input bg-white text-black w-80" placeholder="*Password" />
+                        <input name="password" onChange={handleFormChange} value={signInDetails.password} type="password" className="input bg-white text-black w-80" placeholder="*Password" />
                     </fieldset>
 
                     {/* Already have an account field */}
